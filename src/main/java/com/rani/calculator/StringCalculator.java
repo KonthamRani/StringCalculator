@@ -6,11 +6,11 @@ public class StringCalculator {
         if (numbers.isEmpty()) {
             return 0;
         }
-		return 0;
+        return Integer.parseInt(numbers);
         
     }
   public static void main(String[] args) {
 	  StringCalculator calculator = new StringCalculator();
-      System.out.println(calculator.add(""));
+      System.out.println(calculator.add("1"));
   }
 }
