@@ -51,6 +51,15 @@ public class StringCalculatorTest {
 	    });
 	    assertEquals("negative numbers not allowed -2", exception.getMessage());
 	}
+	//Test case for multiple negative numbers throwing exception.
+	@Test
+	public void testMultipleNegativeNumbersThrowsException() {
+	    StringCalculator calculator = new StringCalculator();
+	    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+	        calculator.add("1,-2,-3");
+	    });
+	    assertEquals("negative numbers not allowed -2,-3", exception.getMessage());
+	}
 
 
 
