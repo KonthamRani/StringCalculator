@@ -20,6 +20,6 @@ public class StringCalculator {
 	
   public static void main(String[] args) {
 	  StringCalculator calculator = new StringCalculator();
-      System.out.println(calculator.add("1"));
+      System.out.println(calculator.add("1,2"));
   }
 }
