@@ -6,15 +6,13 @@ public class StringCalculator {
 	    if (numbers.isEmpty()) {
 	        return 0;
 	    }
+	    //code for string containing numbers
 	    String[] numArray = numbers.split(",");
-	    //code for single number
-	    if (numArray.length == 1) {
-	        return Integer.parseInt(numbers);
-	    } 
-	    //code for 1+ numbers
-	    else {
-	        return Integer.parseInt(numArray[0]) + Integer.parseInt(numArray[1]);
+	    int sum = 0;
+	    for (String num : numArray) {
+	        sum += Integer.parseInt(num);
 	    }
+	    return sum;
 	}
 
 	
