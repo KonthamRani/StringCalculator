@@ -1,52 +1,55 @@
 package com.rani.calculator;
 
 public class StringCalculator {
-	public int add(String numbers) {
-		String[] numsArray = numbers.split("[,\n]");
-		//code for empty string
-	    if (numbers.isEmpty()) {
-	        return 0;
-	    }
-	    //code for string containing different delimeters
-	    
-	    else if (numbers.startsWith("//")) {
-	        String delimiter = numbers.substring(2, 3);
-	        numbers = numbers.substring(4);
-	        String[] numArray = numbers.split(delimiter);
-	        int sum = 0;
-	        for (String num : numArray) {
-	            sum += Integer.parseInt(num);
-	        }
-	        return sum;
-	    }
-	    else
-	    {
-	    	int sum = 0;
-	        StringBuilder negatives = new StringBuilder();
-	        for (String num : numsArray) {
-	            int number = Integer.parseInt(num);
-	            if (number < 0) {
-	                if (negatives.length() > 0) {
-	                    negatives.append(",");
-	                }
-	                negatives.append(number);
-	            }
-	            sum += number;
-	        }
-	        if (negatives.length() > 0) {
-	            throw new IllegalArgumentException("negative numbers not allowed " + negatives);
-	        }
-	    }
-	    int sum = 0;
-	    for (String num : numsArray) {
-	        sum += Integer.parseInt(num);
-	    }
-	    return sum;
-	}
+	//code for empty string
+    public int add(String numbers) {
+        if (numbers.isEmpty()) {
+            return 0; 
+        }
 
-	
-  public static void main(String[] args) {
-	  StringCalculator calculator = new StringCalculator();
-      System.out.println( calculator.add("1,-2,-3"));
-  }
+        String delimiter = ",|\n"; 
+
+      //code for string containing different delimeters
+        if (numbers.startsWith("//")) {
+        	// Extract delimiter from the input string
+            int delimiterIndex = numbers.indexOf('\n');
+            delimiter = numbers.substring(2, delimiterIndex);
+            // Extract the numbers part
+            numbers = numbers.substring(delimiterIndex + 1); 
+        }
+
+        // Split numbers based on the delimiters
+        String[] numsArray = numbers.split(delimiter);
+
+        // Calculate the sum and handle negative numbers
+        return calculateSum(numsArray);
+    }
+
+    // Method to calculate sum and check for negative numbers
+    private int calculateSum(String[] numbers) {
+        int sum = 0;
+        StringBuilder negativeNumbers = new StringBuilder();
+
+        for (String num : numbers) {
+            int number = Integer.parseInt(num);
+            if (number < 0) {
+                if (negativeNumbers.length() > 0) {
+                    negativeNumbers.append(",");
+                }
+                negativeNumbers.append(number);
+            }
+            sum += number;
+        }
+
+        if (negativeNumbers.length() > 0) {
+            throw new IllegalArgumentException("negative numbers not allowed " + negativeNumbers);
+        }
+
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        StringCalculator calculator = new StringCalculator();
+        System.out.println(calculator.add("-3")); 
+    }
 }
