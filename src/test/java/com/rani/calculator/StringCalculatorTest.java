@@ -36,6 +36,12 @@ public class StringCalculatorTest {
 	    StringCalculator calculator = new StringCalculator();
 	    assertEquals(6, calculator.add("1\n2,3"));
 	}
+	//Test case to Handle different delimiters
+	@Test
+	public void testDifferentDelimiters() {
+	    StringCalculator calculator = new StringCalculator();
+	    assertEquals(3, calculator.add("//;\n1;2"));
+	}
 
 
 
