@@ -1,7 +1,16 @@
 package com.rani.calculator;
 
 public class StringCalculator {
+	public int add(String numbers) {
+		//code for empty string
+        if (numbers.isEmpty()) {
+            return 0;
+        }
+		return 0;
+        
+    }
   public static void main(String[] args) {
-    System.out.println("Hello World!");
+	  StringCalculator calculator = new StringCalculator();
+      System.out.println(calculator.add(""));
   }
 }

@@ -12,4 +12,5 @@ public class StringCalculatorTest {
 	    assertEquals(0, calculator.add(""));
 	}
 
+
 }
